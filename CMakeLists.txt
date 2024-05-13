@@ -1,0 +1,112 @@
+cmake_minimum_required(VERSION 3.3)
+project(lcgol_trainer)
+
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -std=c++11")
+set(CMAKE_CXX_STANDARD 14)
+
+add_subdirectory(libs/hacklib)
+
+set(SOURCE_FILES
+    libs/minidx9/Include/DX11/D2D1.h
+    libs/minidx9/Include/DX11/D2D1Helper.h
+    libs/minidx9/Include/DX11/D2DBaseTypes.h
+    libs/minidx9/Include/DX11/D2Derr.h
+    libs/minidx9/Include/DX11/D3D10.h
+    libs/minidx9/Include/DX11/D3D10_1.h
+    libs/minidx9/Include/DX11/D3D10_1shader.h
+    libs/minidx9/Include/DX11/D3D10effect.h
+    libs/minidx9/Include/DX11/d3d10misc.h
+    libs/minidx9/Include/DX11/d3d10sdklayers.h
+    libs/minidx9/Include/DX11/D3D10shader.h
+    libs/minidx9/Include/DX11/d3d11.h
+    libs/minidx9/Include/DX11/D3D11SDKLayers.h
+    libs/minidx9/Include/DX11/D3D11Shader.h
+    libs/minidx9/Include/DX11/D3DX10.h
+    libs/minidx9/Include/DX11/d3dx10async.h
+    libs/minidx9/Include/DX11/D3DX10core.h
+    libs/minidx9/Include/DX11/D3DX10math.h
+    libs/minidx9/Include/DX11/D3DX10mesh.h
+    libs/minidx9/Include/DX11/D3DX10tex.h
+    libs/minidx9/Include/DX11/D3DX11.h
+    libs/minidx9/Include/DX11/D3DX11async.h
+    libs/minidx9/Include/DX11/D3DX11core.h
+    libs/minidx9/Include/DX11/D3DX11tex.h
+    libs/minidx9/Include/DX11/DXGI.h
+    libs/minidx9/Include/DX11/DXGIFormat.h
+    libs/minidx9/Include/DX11/DXGIType.h
+    libs/minidx9/Include/DX11/xnamath.h
+    libs/minidx9/Include/audiodefs.h
+    libs/minidx9/Include/comdecl.h
+    libs/minidx9/Include/d3d9.h
+    libs/minidx9/Include/d3d9caps.h
+    libs/minidx9/Include/d3d9types.h
+    libs/minidx9/Include/D3Dcommon.h
+    libs/minidx9/Include/D3Dcompiler.h
+    libs/minidx9/Include/D3DCSX.h
+    libs/minidx9/Include/d3dx9.h
+    libs/minidx9/Include/d3dx9anim.h
+    libs/minidx9/Include/d3dx9core.h
+    libs/minidx9/Include/d3dx9effect.h
+    libs/minidx9/Include/d3dx9math.h
+    libs/minidx9/Include/d3dx9mesh.h
+    libs/minidx9/Include/d3dx9shader.h
+    libs/minidx9/Include/d3dx9shape.h
+    libs/minidx9/Include/d3dx9tex.h
+    libs/minidx9/Include/d3dx9xof.h
+    libs/minidx9/Include/Dcommon.h
+    libs/minidx9/Include/dinput.h
+    libs/minidx9/Include/dinputd.h
+    libs/minidx9/Include/dsconf.h
+    libs/minidx9/Include/dsetup.h
+    libs/minidx9/Include/dsound.h
+    libs/minidx9/Include/DWrite.h
+    libs/minidx9/Include/dxdiag.h
+    libs/minidx9/Include/DxErr.h
+    libs/minidx9/Include/dxfile.h
+    libs/minidx9/Include/dxsdkver.h
+    libs/minidx9/Include/gameux.h
+    libs/minidx9/Include/PIXPlugin.h
+    libs/minidx9/Include/rmxfguid.h
+    libs/minidx9/Include/rmxftmpl.h
+    libs/minidx9/Include/rpcsal.h
+    libs/minidx9/Include/X3DAudio.h
+    libs/minidx9/Include/xact3.h
+    libs/minidx9/Include/xact3d3.h
+    libs/minidx9/Include/xact3wb.h
+    libs/minidx9/Include/XAPO.h
+    libs/minidx9/Include/XAPOBase.h
+    libs/minidx9/Include/XAPOFX.h
+    libs/minidx9/Include/XAudio2.h
+    libs/minidx9/Include/XAudio2fx.h
+    libs/minidx9/Include/XDSP.h
+    libs/minidx9/Include/XInput.h
+    libs/minidx9/Include/xma2defs.h
+    src/DebugMenu.cpp
+    src/DebugMenu.h
+    src/dllmain.cpp
+    src/EntityViewer.cpp
+    src/EntityViewer.h
+    src/Game.cpp
+    src/Game.h
+    src/Hooks.cpp
+    src/Hooks.h
+    src/Hud.cpp
+    src/Hud.h
+    src/Input.cpp
+    src/Input.h
+    src/IRenderable.h
+    src/Menu.cpp
+    src/Menu.h
+    src/stdafx.cpp
+    src/stdafx.h
+    src/targetver.h
+    src/Trainer.cpp
+    src/Trainer.h
+    src/Util.cpp
+    src/Util.h
+    src/wrapper.cpp)
+
+add_executable(lcgol_trainer ${SOURCE_FILES})
+target_link_libraries(lcgol_trainer
+    hacklib
+)
