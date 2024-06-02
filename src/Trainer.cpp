@@ -1,10 +1,11 @@
 #include <map>
-#include <cassert>
 
 #include "Trainer.h"
 #include "Game.h"
 #include "Hooks.h"
 #include "Util.h"
+
+#include "assert.h"
 
 using namespace std::literals::string_literals;
 
@@ -99,7 +100,6 @@ void Trainer::Test()
 
 void Trainer::Draw()
 {
-    printf("test Draw\n");
 	if (Game::Functions::GetCurrentGameState() != Game::GameState::PlayGame)
 		return;
 
@@ -187,7 +187,6 @@ void Trainer::Draw()
 	}
 #endif
 
-        printf("test begin\n");
 	if (!*Game::Globals::g_menu_state)
 	{
 		auto device = Game::PCDeviceManager::Get()->getDevice();
@@ -200,22 +199,16 @@ void Trainer::Draw()
 
 		auto view = Game::Util::GetViewMatrix();
 		auto projection = Game::Util::GetProjectionMatrix();
-                printf("test Drawer update\n");
 		m_drawer->Update(view, projection);
 
 		assert(SUCCEEDED(device->SetTransform(D3DTS_VIEW, &view)));
 		assert(SUCCEEDED(device->SetTransform(D3DTS_PROJECTION, &projection)));
 
-                printf("test Drawer renderables\n");
-		// for (auto& renderable : m_renderables)
-		// 	renderable->Draw();
-                printf("test Drawer renderables done\n");
+		for (auto& renderable : m_renderables)
+			renderable->Draw();
 
 		assert(SUCCEEDED(state->Apply()));
-                printf("test Drawer renderables done 2\n");
-                // __asm__("int3");
 		state->Release();
-                printf("test Drawer finish\n");
 	}
 }
 

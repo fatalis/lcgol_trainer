@@ -1,7 +1,8 @@
 cmake_minimum_required(VERSION 3.3)
 project(lcgol_trainer)
 
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror")
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -g")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -O2")
 set(CMAKE_CXX_STANDARD 14)
 # SET(CMAKE_SHARED_LINKER_FLAGS "--enable-stdcall-fixup ${CMAKE_SHARED_LINKER_FLAGS}")
 
