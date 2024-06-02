@@ -9,16 +9,16 @@ add_link_options(-static)
 
 set(SUBHOOK_STATIC ON)
 set(SUBHOOK_TESTS OFF)
-add_subdirectory(libs/subhook)
-link_directories(libs/minidx9/Lib/x86)
+add_subdirectory(subhook)
+link_directories(minidx9/Lib/x86)
 include_directories(
-    libs/Deviare-InProc/Include
-    libs/minidx9/Include
-    libs/hacklib/src/hacklib/include
+    Deviare-InProc/Include
+    minidx9/Include
+    hacklib/src/hacklib/include
 )
 
 set(SOURCE_FILES
-    libs/hacklib/src/hacklib/src/Drawer.cpp
+    hacklib/src/hacklib/src/Drawer.cpp
 
     src/dllmain.cpp
     src/DebugMenu.cpp

@@ -1,9 +1,9 @@
 [submodule "libs/hacklib"]
-	path = libs/hacklib
+	path = hacklib
 	url = https://github.com/rafzi/hacklib.git
 [submodule "libs/minidx9"]
-	path = libs/minidx9
+	path = minidx9
 	url = https://github.com/hrydgard/minidx9.git
 [submodule "libs/subhook"]
-	path = libs/subhook
+	path = subhook
 	url = https://github.com/Zeex/subhook.git
