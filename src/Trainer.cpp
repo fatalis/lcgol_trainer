@@ -1,4 +1,5 @@
-﻿#include "stdafx.h"
+#include <map>
+#include <cassert>
 
 #include "Trainer.h"
 #include "Game.h"
@@ -98,6 +99,7 @@ void Trainer::Test()
 
 void Trainer::Draw()
 {
+    printf("test Draw\n");
 	if (Game::Functions::GetCurrentGameState() != Game::GameState::PlayGame)
 		return;
 
@@ -185,6 +187,7 @@ void Trainer::Draw()
 	}
 #endif
 
+        printf("test begin\n");
 	if (!*Game::Globals::g_menu_state)
 	{
 		auto device = Game::PCDeviceManager::Get()->getDevice();
@@ -197,24 +200,30 @@ void Trainer::Draw()
 
 		auto view = Game::Util::GetViewMatrix();
 		auto projection = Game::Util::GetProjectionMatrix();
+                printf("test Drawer update\n");
 		m_drawer->Update(view, projection);
 
 		assert(SUCCEEDED(device->SetTransform(D3DTS_VIEW, &view)));
 		assert(SUCCEEDED(device->SetTransform(D3DTS_PROJECTION, &projection)));
 
-		for (auto& renderable : m_renderables)
-			renderable->Draw();
+                printf("test Drawer renderables\n");
+		// for (auto& renderable : m_renderables)
+		// 	renderable->Draw();
+                printf("test Drawer renderables done\n");
 
 		assert(SUCCEEDED(state->Apply()));
+                printf("test Drawer renderables done 2\n");
+                // __asm__("int3");
 		state->Release();
+                printf("test Drawer finish\n");
 	}
 }
 
 void Trainer::InitOverlay()
 {
 	m_drawer->SetDevice(Game::PCDeviceManager::Get()->getDevice());
-	//m_renderables.push_back(std::make_unique<EntityViewer>(m_drawer));
-	m_renderables.push_back(std::make_unique<Hud>(m_drawer));
+	// m_renderables.push_back(std::make_unique<EntityViewer>(m_drawer));
+	// m_renderables.push_back(std::make_unique<Hud>(m_drawer));
 	m_renderables.push_back(std::make_unique<DebugMenu>(m_drawer, m_input));
 }
 

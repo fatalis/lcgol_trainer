@@ -1,7 +1,7 @@
-﻿#pragma once
+#pragma once
 
 #include <d3dx9.h>
-#include <hacklib/ImplementMember.h>
+#include "ImplementMember.h"
 
 #include "Util.h"
 

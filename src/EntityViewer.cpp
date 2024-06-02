@@ -1,4 +1,6 @@
-﻿#include "stdafx.h"
+#include <d3d9.h>
+#include <d3dx9.h>
+#include <cassert>
 
 #include "EntityViewer.h"
 #include "Game.h"
@@ -12,7 +14,7 @@ EntityViewer::EntityViewer(std::shared_ptr<hl::Drawer> drawer)
 
 	LPD3DXFONT font;
 	assert(SUCCEEDED(D3DXCreateFont(drawer->GetDevice(), 12, 0, FW_NORMAL, 0, false, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
-	       DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Fixedsys", &font)));
+	       DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, "Fixedsys", &font)));
 	m_font.reset(font);
 }
 
@@ -105,8 +107,10 @@ void EntityViewer::DrawEntityName(const Game::Entity * ent) const
 
 void EntityViewer::Draw()
 {
+    printf("draw entity viewer\n");
 	for (auto i = 0; i < Game::EntityList::length; i++)
 	{
+            printf("draw entity viewer %d\n", i);
 		const Game::Entity* ent = reinterpret_cast<Game::Entity*>(Game::EntityList::offset + (Game::Entity::size * i));
 
 		if (!ent->getIsActive())
@@ -130,4 +134,5 @@ void EntityViewer::Draw()
 
 		this->DrawEntityName(ent);
 	}
+        printf("ent viewer done\n");
 }

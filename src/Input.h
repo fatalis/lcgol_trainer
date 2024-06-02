@@ -1,6 +1,9 @@
-﻿#pragma once
+#pragma once
 
+#define WIN32_LEAN_AND_MEAN
+#include <windows.h>
 #include <xinput.h> // make sure the linker lib uses xinput1_3.dll and not any other
+#include <array>
 
 class Input
 {

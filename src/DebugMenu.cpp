@@ -1,4 +1,4 @@
-﻿#include "stdafx.h"
+#include <cassert>
 
 #include "DebugMenu.h"
 #include "Game.h"
@@ -11,9 +11,9 @@ enum CameraChoices
 
 DebugMenu::DebugMenu(std::shared_ptr<hl::Drawer> drawer, std::shared_ptr<Input> input) : Menu(drawer, input)
 {
-	m_name = "Larry Craft Deboog";
+	m_name = "lcgol trainer by fatalis";
 
-	m_menu_items.push_back(std::make_shared<MenuItem>("---- Deboog Menu ----"));
+	m_menu_items.push_back(std::make_shared<MenuItem>("---- Debug Menu ----"));
 
 	m_menu_items.push_back(std::make_shared<BooleanMenuItem>("Fly Mode", [](bool on) {
 		auto& flags = Game::Player::Get()->getFlags();

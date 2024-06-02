@@ -1,5 +1,3 @@
-#include "stdafx.h"
-
 // TODO: the rest of them
 
 // TODO GetFileVersionInfoSizeEx

@@ -1,5 +1,3 @@
-﻿#include "stdafx.h"
-
 #include "Input.h"
 
 void Input::Update()

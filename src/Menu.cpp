@@ -1,4 +1,6 @@
-﻿#include "stdafx.h"
+#include <string>
+#include <map>
+#include <cassert>
 
 #include "Menu.h"
 
@@ -7,7 +9,7 @@ Menu::Menu(std::shared_ptr<hl::Drawer> drawer, std::shared_ptr<Input> input) : I
 	m_input = input;
 
 	LPD3DXFONT font;
-	assert(SUCCEEDED(D3DXCreateFont(drawer->GetDevice(), 20, 0, FW_NORMAL, 0, false, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
+	assert(SUCCEEDED(D3DXCreateFontW(drawer->GetDevice(), 20, 0, FW_NORMAL, 0, false, DEFAULT_CHARSET, OUT_DEFAULT_PRECIS,
 		DEFAULT_QUALITY, DEFAULT_PITCH | FF_DONTCARE, L"Consolas", &font)));
 	m_font.reset(font);
 

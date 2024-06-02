@@ -1,6 +1,10 @@
-﻿#pragma once
+#pragma once
 
 #include <windows.h>
+#include <functional>
+#include <memory>
+#include <cstring>
+#include <string>
 
 namespace Util {
 	inline void memcpy_protected(void* dest, const void* src, std::size_t size)
