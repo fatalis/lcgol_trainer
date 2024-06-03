@@ -121,7 +121,7 @@
 // class CameraManager
 // {
 // public:
-// 	IMPLVTFUNC_OR(void, GetCameraByType, 57, int, test);
+//     IMPLVTFUNC_OR(void, GetCameraByType, 57, int, test);
 // };
 
 ///////////////////

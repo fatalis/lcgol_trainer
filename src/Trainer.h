@@ -11,21 +11,21 @@
 class Trainer : public std::enable_shared_from_this<Trainer>
 {
 public:
-	~Trainer();
-	void Initialize();
-	void Draw();
-	void InitOverlay();
-	void Test();
+    ~Trainer();
+    void Initialize();
+    void Draw();
+    void InitOverlay();
+    void Test();
 
 private:
-	void ApplyPatches() const;
+    void ApplyPatches() const;
 
-	std::shared_ptr<DebugMenu> m_menu;
-	std::shared_ptr<Hud> m_hud;
-	std::shared_ptr<EntityViewer> m_entity_viewer;
-	std::shared_ptr<hl::Drawer> m_drawer = std::make_shared<hl::Drawer>();
+    std::shared_ptr<DebugMenu> m_menu;
+    std::shared_ptr<Hud> m_hud;
+    std::shared_ptr<EntityViewer> m_entity_viewer;
+    std::shared_ptr<hl::Drawer> m_drawer = std::make_shared<hl::Drawer>();
 
-	std::vector<std::shared_ptr<IRenderable>> m_renderables;
+    std::vector<std::shared_ptr<IRenderable>> m_renderables;
 
-	std::shared_ptr<Input> m_input = std::make_shared<Input>();
+    std::shared_ptr<Input> m_input = std::make_shared<Input>();
 };

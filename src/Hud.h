@@ -6,6 +6,6 @@
 
 class Hud : public IRenderable
 {
-	using IRenderable::IRenderable;
-	void Draw() override;
+    using IRenderable::IRenderable;
+    void Draw() override;
 };
