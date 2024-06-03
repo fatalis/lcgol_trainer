@@ -16,6 +16,8 @@ public:
 
 	void Draw() override;
 
+	// encapsulate in IRenderable?
+	bool m_visible = false;
 private:
 	enum class TriggerType
 	{

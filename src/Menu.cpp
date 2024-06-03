@@ -118,6 +118,10 @@ void Menu::Draw()
 			values.emplace(item.get(), bool_item->IsOn() ? "ON" : "OFF");
 			continue;
 		}
+		auto choice_item = dynamic_cast<ChoiceMenuItem*>(item.get());
+		if (choice_item)
+		{
+		}
 	}
 
 	// calculate menu bounds

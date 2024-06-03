@@ -107,6 +107,9 @@ void EntityViewer::DrawEntityName(const Game::Entity * ent) const
 
 void EntityViewer::Draw()
 {
+	if (!m_visible)
+		return;
+
 	for (auto i = 0; i < Game::EntityList::length; i++)
 	{
 		const Game::Entity* ent = reinterpret_cast<Game::Entity*>(Game::EntityList::offset + (Game::Entity::size * i));

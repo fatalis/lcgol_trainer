@@ -20,12 +20,12 @@ public:
 private:
 	void ApplyPatches() const;
 
-	std::unique_ptr<DebugMenu> m_menu;
-	std::unique_ptr<Hud> m_hud;
-	std::unique_ptr<EntityViewer> m_entity_viewer;
+	std::shared_ptr<DebugMenu> m_menu;
+	std::shared_ptr<Hud> m_hud;
+	std::shared_ptr<EntityViewer> m_entity_viewer;
 	std::shared_ptr<hl::Drawer> m_drawer = std::make_shared<hl::Drawer>();
 
-	std::vector<std::unique_ptr<IRenderable>> m_renderables;
+	std::vector<std::shared_ptr<IRenderable>> m_renderables;
 
 	std::shared_ptr<Input> m_input = std::make_shared<Input>();
 };

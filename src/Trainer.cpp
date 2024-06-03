@@ -1,6 +1,7 @@
 #include <map>
 
 #include "Trainer.h"
+#include "EntityViewer.h"
 #include "Game.h"
 #include "Hooks.h"
 #include "Util.h"
@@ -43,7 +44,7 @@ void Trainer::Test()
 
 	hl::Drawer drawer;
 	drawer.SetDevice(device);
-	drawer.DrawCircle(256.0f, 256.0f, 256.0f, -1);
+	// drawer.DrawCircle(256.0f, 256.0f, 256.0f, -1);
 
 	std::vector<hl::VERTEX_3D_COL> boxVerts {
 		{ -250.0f, -250.0f, 0 },
@@ -86,7 +87,7 @@ void Trainer::Test()
 
 	device->SetFVF(D3DFVF_XYZ);
 	assert(SUCCEEDED(device->SetTexture(0, nullptr))); //
-	assert(SUCCEEDED(mesh->DrawSubset(0)));
+	// assert(SUCCEEDED(mesh->DrawSubset(0)));
 	//assert(SUCCEEDED(device->DrawPrimitiveUP(D3DPT_LINESTRIP, 8, boxVerts.data(), sizeof(hl::VERTEX_3D_COL))));
 	// TODO: use DrawPrimativeUP
 
@@ -106,13 +107,15 @@ void Trainer::Draw()
 	if (*Game::Globals::g_num_active_players == 0)
 		return;
 
+	// this->Test();
+
 	m_input->Update();
 
-#if 0
-	if (m_input.IsPressed(Input::Button::Special))
+#if 1
+	if (m_input->WasPressed(Input::Button::Special))
 	{
-		auto camera = Game::CameraManager::Get()->GetCameraByType(Game::CameraType::Free);
-		Game::CameraManager::Get()->SetCamera(camera);
+		// auto camera = Game::CameraManager::Get()->GetCameraByType(Game::CameraType::Free);
+		// Game::CameraManager::Get()->SetCamera(camera);
 	}
 	else if (GetAsyncKeyState(VK_F2))
 	{
@@ -121,11 +124,11 @@ void Trainer::Draw()
 	}
 	else if (GetAsyncKeyState(VK_F3))
 	{
-		Game::Player::Get()->setFlags(16);
+		// Game::Player::Get()->setFlags(16);
 	}
 	else if (GetAsyncKeyState(VK_F4))
 	{
-		Game::Player::Get()->setFlags(0);
+		// Game::Player::Get()->setFlags(0);
 	}
 	else if (GetAsyncKeyState(VK_F5))
 	{
@@ -215,9 +218,11 @@ void Trainer::Draw()
 void Trainer::InitOverlay()
 {
 	m_drawer->SetDevice(Game::PCDeviceManager::Get()->getDevice());
-	// m_renderables.push_back(std::make_unique<EntityViewer>(m_drawer));
-	// m_renderables.push_back(std::make_unique<Hud>(m_drawer));
-	m_renderables.push_back(std::make_unique<DebugMenu>(m_drawer, m_input));
+
+	m_entity_viewer = std::make_shared<EntityViewer>(m_drawer);
+	m_renderables.push_back(m_entity_viewer);
+
+	m_renderables.push_back(std::make_shared<DebugMenu>(m_drawer, m_input, m_entity_viewer));
 }
 
 void Trainer::ApplyPatches() const
