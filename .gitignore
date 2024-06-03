@@ -1,2 +1,5 @@
 build/
 bin/
+.cache/
+.directory
+compile_commands.json

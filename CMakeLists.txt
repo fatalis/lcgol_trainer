@@ -1,10 +1,10 @@
 cmake_minimum_required(VERSION 3.3)
 project(lcgol_trainer)
 
-# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -g")
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -O2")
+set(CMAKE_EXPORT_COMPILE_COMMANDS ON)
+# set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Werror -O2 -Wl,--enable-stdcall-fixup")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Werror -O2 -Wl,--enable-stdcall-fixup")
 set(CMAKE_CXX_STANDARD 14)
-# SET(CMAKE_SHARED_LINKER_FLAGS "--enable-stdcall-fixup ${CMAKE_SHARED_LINKER_FLAGS}")
 
 add_link_options(-static)
 
@@ -13,7 +13,6 @@ set(SUBHOOK_TESTS OFF)
 add_subdirectory(subhook)
 link_directories(minidx9/Lib/x86)
 include_directories(
-    Deviare-InProc/Include
     minidx9/Include
     hacklib/src/hacklib/include
 )
