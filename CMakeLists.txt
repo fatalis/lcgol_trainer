@@ -45,8 +45,10 @@ target_link_libraries(lcgol_trainer
 set_target_properties(lcgol_trainer PROPERTIES PREFIX "")
 set_target_properties(lcgol_trainer PROPERTIES OUTPUT_NAME "version")
 
-add_custom_command(
-    TARGET lcgol_trainer POST_BUILD
-    COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:lcgol_trainer> '/home/fatalis/games/Lara Croft and the Guardian of Light2/'
-    COMMENT "Copying $<TARGET_FILE:lcgol_trainer> to output directory"
-)
+if(DEFINED ENV{USER} AND "$ENV{USER}" STREQUAL "fatalis")
+    add_custom_command(
+        TARGET lcgol_trainer POST_BUILD
+        COMMAND ${CMAKE_COMMAND} -E copy $<TARGET_FILE:lcgol_trainer> '/home/fatalis/games/Lara Croft and the Guardian of Light/'
+        COMMENT "Copying $<TARGET_FILE:lcgol_trainer> to output directory"
+    )
+endif()
