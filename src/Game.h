@@ -1,5 +1,6 @@
 #pragma once
 
+#include <cstdarg>
 #include <d3dx9.h>
 #include "ImplementMember.h"
 
@@ -84,7 +85,7 @@ class Player // size 8208d
 
     enum PlayerFlags
     {
-        FlyMode = 4
+        FlyMode = 4,
     };
 
     static Player* Get();

@@ -113,6 +113,9 @@ void Trainer::Draw()
 
     m_input->Update();
 
+    Game::PCDeviceManager::Get()->getDevice()->SetRenderState(D3DRS_FILLMODE,
+        m_wireframe ? D3DFILL_WIREFRAME : D3DFILL_SOLID);
+
 #if 1
     if (m_input->WasPressed(Input::Button::Special))
     {
@@ -124,7 +127,7 @@ void Trainer::Draw()
         auto camera = Game::CameraManager::Get()->GetCameraByType(Game::CameraType::Game);
         Game::CameraManager::Get()->SetCamera(camera);
     }
-    else if (GetAsyncKeyState(VK_F3))
+    else if (GetAsyncKeyState(VK_F3)) // noclip
     {
         // Game::Player::Get()->setFlags(16);
     }
@@ -224,7 +227,7 @@ void Trainer::InitOverlay()
     m_entity_viewer = std::make_shared<EntityViewer>(m_drawer);
     m_renderables.push_back(m_entity_viewer);
 
-    m_renderables.push_back(std::make_shared<DebugMenu>(m_drawer, m_input, m_entity_viewer));
+    m_renderables.push_back(std::make_shared<DebugMenu>(m_drawer, m_input, m_entity_viewer, shared_from_this()));
 }
 
 void Trainer::ApplyPatches() const

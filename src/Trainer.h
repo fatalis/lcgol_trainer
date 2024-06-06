@@ -17,6 +17,8 @@ public:
     void InitOverlay();
     void Test();
 
+    bool m_wireframe = false;
+
 private:
     void ApplyPatches() const;
 
