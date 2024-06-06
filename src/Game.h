@@ -170,10 +170,13 @@ namespace Functions {
         typedef GameState(*GetCurrentGameState_t)();
         typedef void(*GameFlowPlayGame_t)();
         typedef bool(*InitEngine_t)(float unk_zero);
+        typedef void(*DrawStringOrig_t)(float* pos, unsigned int color, char unk, const char *fmt, ...);
     }
     static const auto GetCurrentGameState = reinterpret_cast<details::GetCurrentGameState_t>(0x60BD50);
     static const auto GameFlowPlayGame = reinterpret_cast<details::GameFlowPlayGame_t>(0x62E400);
     static const auto InitEngine = reinterpret_cast<details::InitEngine_t>(0x643FB0);
+    static const auto DrawStringOrig = reinterpret_cast<details::DrawStringOrig_t>(0x60CA60);
+    void DrawString(float x, float y, unsigned int color, const char* fmt, ...);
 }
 
 namespace Globals {

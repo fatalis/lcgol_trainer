@@ -107,6 +107,8 @@ void Trainer::Draw()
     if (*Game::Globals::g_num_active_players == 0)
         return;
 
+    Game::Functions::DrawString(0.01, 0.05, 0xFFFFFFFF, "lcgol_trainer");
+
     // this->Test();
 
     m_input->Update();

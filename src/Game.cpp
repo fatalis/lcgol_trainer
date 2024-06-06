@@ -27,4 +27,10 @@ PCDeviceManager* PCDeviceManager::Get()
     return *reinterpret_cast<PCDeviceManager**>(offset);
 }
 
+void Functions::DrawString(float x, float y, unsigned int color, const char* fmt, ...)
+{
+    float pos[2] = {x, y};
+    Functions::DrawStringOrig(pos, color, 4, fmt);
+}
+
 } // namespace Game
